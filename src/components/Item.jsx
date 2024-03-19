@@ -35,6 +35,14 @@ export default function Item({title, id, status}){
         localStorage.setItem('tasks',JSON.stringify(removeTodos));
     }
 
+    const date = new Date();
+    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const month = monthNames[date.getMonth()];
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+
     return (
         <>
             {visible && (
@@ -43,7 +51,7 @@ export default function Item({title, id, status}){
                         <input type="checkbox"
                         checked={checked}
                         onChange={updateStatus} />
-                        <span>{title}</span>
+                        <span>{hour + ':' + minute + ', ' + month + ' ' + day + ', ' + year + ' ' + title}</span>
                         <i className="material-icons red-text"
                         onClick={removeElement}
                         >
